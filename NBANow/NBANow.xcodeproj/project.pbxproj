@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2328FECE1A7D960F003158AA /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328FECD1A7D960F003158AA /* Team.swift */; };
 		D33F584A1A7D497E00491749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F58491A7D497E00491749 /* AppDelegate.swift */; };
 		D33F584C1A7D497E00491749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F584B1A7D497E00491749 /* ViewController.swift */; };
 		D33F584F1A7D497E00491749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33F584D1A7D497E00491749 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2328FECD1A7D960F003158AA /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		D33F58441A7D497E00491749 /* NBANow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBANow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33F58481A7D497E00491749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D33F58491A7D497E00491749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		D33F58461A7D497E00491749 /* NBANow */ = {
 			isa = PBXGroup;
 			children = (
+				2328FECD1A7D960F003158AA /* Team.swift */,
 				D33F58491A7D497E00491749 /* AppDelegate.swift */,
 				D33F584B1A7D497E00491749 /* ViewController.swift */,
 				D33F584D1A7D497E00491749 /* Main.storyboard */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2328FECE1A7D960F003158AA /* Team.swift in Sources */,
 				D33F584C1A7D497E00491749 /* ViewController.swift in Sources */,
 				D33F584A1A7D497E00491749 /* AppDelegate.swift in Sources */,
 			);
@@ -405,6 +409,7 @@
 				D33F58651A7D497E00491749 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D33F58661A7D497E00491749 /* Build configuration list for PBXNativeTarget "NBANowTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				D33F58681A7D497E00491749 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

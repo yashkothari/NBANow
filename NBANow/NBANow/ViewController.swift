@@ -8,16 +8,65 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
+    
+    var nbaTeams = [Team]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.nbaTeams = [Team(teamName: "Atlanta Hawks"),
+            Team(teamName: "Boston Celtics"),
+            Team(teamName: "Brooklyn Nets"),
+            Team(teamName: "Charlotte Hornets"),
+            Team(teamName: "Chicago Bulls"),
+            Team(teamName: "Cleveland Cavaliers"),
+            Team(teamName: "Dallas Mavericks"),
+            Team(teamName: "Denver Nuggets"),
+            Team(teamName: "Detroit Pistons"),
+            Team(teamName: "Golden State Warriors"),
+            Team(teamName: "Houston Rockets"),
+            Team(teamName: "Indiana Pacers"),
+            Team(teamName: "LA Clippers"),
+            Team(teamName: "LA Lakers"),
+            Team(teamName: "Memphis Grizzlies"),
+            Team(teamName: "Miami Heat"),
+            Team(teamName: "Milwaukee Bucks"),
+            Team(teamName: "Minnesota Timberwolves"),
+            Team(teamName: "New Orleans Pelicans"),
+            Team(teamName: "New York Knicks"),
+            Team(teamName: "Oklahoma City Thunder"),
+            Team(teamName: "Orlando Magic"),
+            Team(teamName: "Philadelphia Sixers"),
+            Team(teamName: "Phoenix Suns"),
+            Team(teamName: "Portland Trail Blazers"),
+            Team(teamName: "Sacramento Kings"),
+            Team(teamName: "San Antonio Spurs"),
+            Team(teamName: "Toronto Raptors"),
+            Team(teamName: "Utah Jazz"),
+            Team(teamName: "Washington Wizards") ]
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //tells the tableView that it should contain as many rows as there are items in the candies array you populated earlier.
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.nbaTeams.count
+    }
+    
+    //creates our cells
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell //"Cell" is the identifier
+        
+        var team : Team
+        
+        team = nbaTeams[indexPath.row]
+        
+        cell.textLabel!.text = team.teamName
+        return cell
     }
 
 
