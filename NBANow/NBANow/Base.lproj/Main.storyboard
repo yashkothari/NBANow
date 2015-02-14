@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gIp-K9-hnW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gIp-K9-hnW">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--What's you favourite team?-->
+        <!--Select Team-->
         <scene sceneID="DXF-tA-aTB">
             <objects>
                 <tableViewController id="Cpk-mL-PHX" customClass="ViewController" customModule="NBANow" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,9 +33,14 @@
                             <outlet property="delegate" destination="Cpk-mL-PHX" id="7gN-8l-GEW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="What's you favourite team?" id="SPN-an-Cfo"/>
+                    <navigationItem key="navigationItem" title="Select Team" id="SPN-an-Cfo">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="xtG-g2-nXH"/>
+                    </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="doneBarButtonItem" destination="xtG-g2-nXH" id="JM9-lf-Bpg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nfh-Wc-n0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -85,7 +90,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9g9-4M-3Mo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-343" y="365"/>
+            <point key="canvasLocation" x="335" y="535"/>
         </scene>
     </scenes>
 </document>

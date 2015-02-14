@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2328FECE1A7D960F003158AA /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328FECD1A7D960F003158AA /* Team.swift */; };
 		D33F584A1A7D497E00491749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F58491A7D497E00491749 /* AppDelegate.swift */; };
-		D33F584C1A7D497E00491749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F584B1A7D497E00491749 /* ViewController.swift */; };
+		D33F584C1A7D497E00491749 /* TeamSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F584B1A7D497E00491749 /* TeamSelectionViewController.swift */; };
 		D33F584F1A7D497E00491749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33F584D1A7D497E00491749 /* Main.storyboard */; };
 		D33F58511A7D497E00491749 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33F58501A7D497E00491749 /* Images.xcassets */; };
 		D33F58541A7D497E00491749 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33F58521A7D497E00491749 /* LaunchScreen.xib */; };
@@ -31,7 +31,7 @@
 		D33F58441A7D497E00491749 /* NBANow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBANow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33F58481A7D497E00491749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D33F58491A7D497E00491749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D33F584B1A7D497E00491749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D33F584B1A7D497E00491749 /* TeamSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectionViewController.swift; sourceTree = "<group>"; };
 		D33F584E1A7D497E00491749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D33F58501A7D497E00491749 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D33F58531A7D497E00491749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -58,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D33C18EE1A8B11E7007DB6EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2328FECD1A7D960F003158AA /* Team.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		D33F583B1A7D497E00491749 = {
 			isa = PBXGroup;
 			children = (
@@ -79,9 +87,9 @@
 		D33F58461A7D497E00491749 /* NBANow */ = {
 			isa = PBXGroup;
 			children = (
-				2328FECD1A7D960F003158AA /* Team.swift */,
 				D33F58491A7D497E00491749 /* AppDelegate.swift */,
-				D33F584B1A7D497E00491749 /* ViewController.swift */,
+				D33C18EE1A8B11E7007DB6EB /* Models */,
+				D33F584B1A7D497E00491749 /* TeamSelectionViewController.swift */,
 				D33F584D1A7D497E00491749 /* Main.storyboard */,
 				D33F58501A7D497E00491749 /* Images.xcassets */,
 				D33F58521A7D497E00491749 /* LaunchScreen.xib */,
@@ -216,7 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2328FECE1A7D960F003158AA /* Team.swift in Sources */,
-				D33F584C1A7D497E00491749 /* ViewController.swift in Sources */,
+				D33F584C1A7D497E00491749 /* TeamSelectionViewController.swift in Sources */,
 				D33F584A1A7D497E00491749 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,11 +10,12 @@ import UIKit
 
 class ViewController: UITableViewController {
     
+    @IBOutlet var doneBarButtonItem: UIBarButtonItem!
     var nbaTeams = [Team]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         self.nbaTeams = [Team(teamName: "Atlanta Hawks"),
             Team(teamName: "Boston Celtics"),
             Team(teamName: "Brooklyn Nets"),
@@ -54,6 +55,7 @@ class ViewController: UITableViewController {
     
     //tells the tableView that it should contain as many rows as there are items in the candies array you populated earlier.
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return self.nbaTeams.count
     }
     
@@ -65,10 +67,16 @@ class ViewController: UITableViewController {
         
         team = nbaTeams[indexPath.row]
         
-        cell.textLabel!.text = team.teamName
+        cell.textLabel!.text = "\(team.teamName) \(indexPath.item)"
         return cell
     }
-
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark;
+        self.doneBarButtonItem.enabled = true;
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.None;
+    }
 }
-
