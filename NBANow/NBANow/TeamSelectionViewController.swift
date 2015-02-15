@@ -5,13 +5,15 @@
 //  Created by Yash Kothari on 2015-01-31.
 //  Copyright (c) 2015 3O1. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
-class ViewController: UITableViewController {
+class TeamSelectionViewController: UITableViewController {
     
     @IBOutlet var doneBarButtonItem: UIBarButtonItem!
     var nbaTeams = [Team]()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +69,7 @@ class ViewController: UITableViewController {
         
         team = nbaTeams[indexPath.row]
         
-        cell.textLabel!.text = "\(team.teamName) \(indexPath.item)"
+        cell.textLabel!.text = team.teamName
         return cell
     }
     
