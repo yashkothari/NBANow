@@ -14,6 +14,7 @@
 		D33F58511A7D497E00491749 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33F58501A7D497E00491749 /* Images.xcassets */; };
 		D33F58541A7D497E00491749 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33F58521A7D497E00491749 /* LaunchScreen.xib */; };
 		D33F58601A7D497E00491749 /* NBANowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F585F1A7D497E00491749 /* NBANowTests.swift */; };
+		D3CC01161A8FDBC1005FCD6A /* TeamStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC01151A8FDBC1005FCD6A /* TeamStatusViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		D33F58591A7D497E00491749 /* NBANowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBANowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33F585E1A7D497E00491749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D33F585F1A7D497E00491749 /* NBANowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBANowTests.swift; sourceTree = "<group>"; };
+		D3CC01151A8FDBC1005FCD6A /* TeamStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatusViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				D33F58501A7D497E00491749 /* Images.xcassets */,
 				D33F58521A7D497E00491749 /* LaunchScreen.xib */,
 				D33F58471A7D497E00491749 /* Supporting Files */,
+				D3CC01151A8FDBC1005FCD6A /* TeamStatusViewController.swift */,
 			);
 			path = NBANow;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				2328FECE1A7D960F003158AA /* Team.swift in Sources */,
 				D33F584C1A7D497E00491749 /* TeamSelectionViewController.swift in Sources */,
 				D33F584A1A7D497E00491749 /* AppDelegate.swift in Sources */,
+				D3CC01161A8FDBC1005FCD6A /* TeamStatusViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
