@@ -12,8 +12,6 @@ class TeamSelectionViewController: UITableViewController {
     
     @IBOutlet var doneBarButtonItem: UIBarButtonItem!
     var nbaTeams = [Team]()
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

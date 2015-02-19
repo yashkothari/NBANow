@@ -17,4 +17,9 @@ class TeamStatusViewController : UIViewController {
     @IBAction func saveTeamSelection(segue:UIStoryboardSegue) {
         
     }
+    
+    override func viewDidLoad() {
+        let a = TeamData()
+        a.MakeRequest()
+    }
 }
