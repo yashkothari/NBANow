@@ -15,6 +15,9 @@
 		D33F58541A7D497E00491749 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33F58521A7D497E00491749 /* LaunchScreen.xib */; };
 		D33F58601A7D497E00491749 /* NBANowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F585F1A7D497E00491749 /* NBANowTests.swift */; };
 		D3CC01161A8FDBC1005FCD6A /* TeamStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC01151A8FDBC1005FCD6A /* TeamStatusViewController.swift */; };
+		D3CC01201A92AB42005FCD6A /* ApiWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC011F1A92AB42005FCD6A /* ApiWrapper.swift */; };
+		D3CC01241A92AC26005FCD6A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC01231A92AC26005FCD6A /* SwiftyJSON.swift */; };
+		D3CC01261A92AC39005FCD6A /* TeamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC01251A92AC39005FCD6A /* TeamData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		D33F585E1A7D497E00491749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D33F585F1A7D497E00491749 /* NBANowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBANowTests.swift; sourceTree = "<group>"; };
 		D3CC01151A8FDBC1005FCD6A /* TeamStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamStatusViewController.swift; sourceTree = "<group>"; };
+		D3CC011F1A92AB42005FCD6A /* ApiWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiWrapper.swift; sourceTree = "<group>"; };
+		D3CC01231A92AC26005FCD6A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D3CC01251A92AC39005FCD6A /* TeamData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 		D33C18EE1A8B11E7007DB6EB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D3CC01251A92AC39005FCD6A /* TeamData.swift */,
 				2328FECD1A7D960F003158AA /* Team.swift */,
 			);
 			name = Models;
@@ -89,14 +96,16 @@
 		D33F58461A7D497E00491749 /* NBANow */ = {
 			isa = PBXGroup;
 			children = (
-				D33F58491A7D497E00491749 /* AppDelegate.swift */,
-				D33C18EE1A8B11E7007DB6EB /* Models */,
+				D3CC01231A92AC26005FCD6A /* SwiftyJSON.swift */,
+				D3CC011F1A92AB42005FCD6A /* ApiWrapper.swift */,
 				D33F584B1A7D497E00491749 /* TeamSelectionViewController.swift */,
+				D3CC01151A8FDBC1005FCD6A /* TeamStatusViewController.swift */,
+				D33C18EE1A8B11E7007DB6EB /* Models */,
+				D33F58491A7D497E00491749 /* AppDelegate.swift */,
 				D33F584D1A7D497E00491749 /* Main.storyboard */,
 				D33F58501A7D497E00491749 /* Images.xcassets */,
 				D33F58521A7D497E00491749 /* LaunchScreen.xib */,
 				D33F58471A7D497E00491749 /* Supporting Files */,
-				D3CC01151A8FDBC1005FCD6A /* TeamStatusViewController.swift */,
 			);
 			path = NBANow;
 			sourceTree = "<group>";
@@ -226,8 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CC01261A92AC39005FCD6A /* TeamData.swift in Sources */,
 				2328FECE1A7D960F003158AA /* Team.swift in Sources */,
+				D3CC01201A92AB42005FCD6A /* ApiWrapper.swift in Sources */,
 				D33F584C1A7D497E00491749 /* TeamSelectionViewController.swift in Sources */,
+				D3CC01241A92AC26005FCD6A /* SwiftyJSON.swift in Sources */,
 				D33F584A1A7D497E00491749 /* AppDelegate.swift in Sources */,
 				D3CC01161A8FDBC1005FCD6A /* TeamStatusViewController.swift in Sources */,
 			);

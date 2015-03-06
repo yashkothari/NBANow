@@ -37,12 +37,12 @@
                     <navigationItem key="navigationItem" title="Select Team" id="SPN-an-Cfo">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="sqI-C6-AkN">
                             <connections>
-                                <segue destination="XSP-qc-yIP" kind="unwind" unwindAction="cancelTeamSelection:" id="00i-co-8CW"/>
+                                <segue destination="XSP-qc-yIP" kind="unwind" unwindAction="cancelTeamSelection:" id="JMD-YS-pMD"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="xtG-g2-nXH">
                             <connections>
-                                <segue destination="XSP-qc-yIP" kind="unwind" unwindAction="saveTeamSelection:" id="hwq-Oz-f34"/>
+                                <segue destination="XSP-qc-yIP" kind="unwind" unwindAction="saveTeamSelection:" id="yE3-PD-9Si"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
