@@ -19,7 +19,7 @@ class TeamStatusViewController : UIViewController {
     }
     
     override func viewDidLoad() {
-        let a = TeamData()
-        a.MakeRequest()
+        let api = ApiWrapper.sharedInstance
+        api.getNextGame()
     }
 }

@@ -10,7 +10,9 @@ import Foundation
 
 class ApiWrapper {
     let API_KEY = "yayhu3b9nqghx2zcqmtw2sn6"
-    
+    let teamData:TeamData = TeamData.sharedInstance
+    var timer: NSTimer?
+
 //From: http://code.martinrue.com/posts/the-singleton-pattern-in-swift
 //To create singleton
 /////////////////////////////////////////////
@@ -30,25 +32,6 @@ class ApiWrapper {
     
     init() {}
     
-    func getNextGame(#dayOffset:Int) {
-        var teamData:TeamData = TeamData.sharedInstance
-        var date = NSDate().dateByAddingTimeInterval(NSTimeInterval(60 * 60 * 24 * dayOffset))
-        let Url = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(getDateComponents(date!).year)/\(getDateComponents(date!).month)/\(getDateComponents(date!).day)/schedule.json?api_key=\(API_KEY)")
-        NSLog(Url!.absoluteString!)
-        let task = NSURLSession.sharedSession().dataTaskWithURL(Url!) {(data, response, error) in
-            println(NSString(data:data, encoding: NSUTF8StringEncoding))
-            teamData.getNextGame(data)
-        }
-        task.resume()
-        
-//        if(teamData.isGameToday!) {
-//            updateSchedule()
-//        }
-//        else {
-//            getGameClockAndQuarter(teamData.currentGameId!)
-//        }
-    }
-    
     private func getDateComponents(date:NSDate) -> NSDateComponents {
         //let todayDate = NSDate()
         let calendar = NSCalendar.currentCalendar()
@@ -57,20 +40,38 @@ class ApiWrapper {
         return components
     }
     
-    func updateSchedule() { //TODO: don't update everytime
-//        let baseUrl = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(getTodayDate().year - 1)/REG/schedule.json?api_key=\(API_KEY)")
-//        
-//        let task = NSURLSession.sharedSession().dataTaskWithURL(baseUrl!) {(data, response, error) in
-//            println(NSString(data: data, encoding: NSUTF8StringEncoding))
-//        }
-//        task.resume()
-    }
-    
-    func getGameClockAndQuarter(currentGameId: String) {
-        let baseUrl = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(currentGameId)/boxscore.json?api_key=\(API_KEY)")
-        let task = NSURLSession.sharedSession().dataTaskWithURL(baseUrl!) {(data, response, error) in
-            println(NSString(data:data, encoding: NSUTF8StringEncoding))
+    func getNextGame(dayOffset:Int = 0) {
+        let date = NSDate().dateByAddingTimeInterval(NSTimeInterval(60 * 60 * 24 * dayOffset))
+        let url = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(getDateComponents(date!).year)/\(getDateComponents(date!).month)/\(getDateComponents(date!).day)/schedule.json?api_key=\(API_KEY)")
+
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+            self.teamData.parseGetGameData(data)
+            
+            if self.teamData.isGameOngoing! {
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("getGameClockQuarterScore"), userInfo: nil, repeats: true)
+                self.timer?.fire()
+            }
+            else {
+                var index = 0
+                while !(self.teamData.homeTeamName == "Toronto Raptors" || self.teamData.awayTeamName == "Toronto Raptors") {
+                    index++
+                    self.getNextGame(dayOffset: index)
+                }
+            }
         }
         task.resume()
+    }
+
+    func getGameClockQuarterScore(currentGameId: String) {
+        if !self.teamData.isGameOngoing! {
+            self.timer?.invalidate()
+        }
+        else {
+            let baseUrl = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(currentGameId)/boxscore.json?api_key=\(API_KEY)")
+            let task = NSURLSession.sharedSession().dataTaskWithURL(baseUrl!) {(data, response, error) in
+                self.teamData.parseGetGameClockQuarterScore(data)
+            }
+            task.resume()
+        }
     }
 }

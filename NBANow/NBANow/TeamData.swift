@@ -29,98 +29,66 @@ class TeamData {
     /////////////////////////////////////////////
     
     let api = ApiWrapper.sharedInstance
-    var isGameToday: Bool
-    var currentGameId: String?
+    var isGameOngoing: Bool?
+    var gameId: String?
+    var gameClock: String?
+    var quarter: Int?
+    var dateScheduled: NSDate?
+    
     var homeTeamName: String?
     var homeTeamImage: UIImage?
     var homeTeamScore: Int?
+    
     var awayTeamName: String?
     var awayTeamImage: UIImage?
     var awayTeamScore: Int?
-    var gameClock: NSDate?
-
-    var data:NSData!
     
-    func MakeRequest(){
-        api.getNextGame(dayOffset:0)
-        //api.updateSchedule()
-        //api.getGameClockAndQuarter(<#currentGameId: String#>)
-        //self.parseJson(self.data)
-    }
+    init() {}
     
-    init() {
-        self.isGameToday = false
-    }
-    
-    func updateScoreAndClock() -> (homeTeamScore: Int, awayTeamScore: Int, gameClock: NSDate) {
+    func updateScoreAndClock() -> (homeTeamScore: Int, awayTeamScore: Int, gameClock: String) {
         //TODO: call api.getNextGame() and parse to update below properties
         return (self.homeTeamScore!, self.awayTeamScore!, self.gameClock!);
     }
 
-    func getNextGame(data: NSData) {
-        
+    func parseGetGameData(data: NSData) {
         //SwiftyJSON converts this data into a JSON object using NSJSONSerialization
-        // println(data)
         let json = JSON(data:data)
-        println(json)
-        if let description = json["games"][0]["scheduled"].string {
-           // self.Time = description
-           // println("\(description)")
-        }
-        
-        //TODO: refactor the following plz :'(
+
         for i in 0 ..< json["games"].count {
             if let awayTeam = json["games"][i]["away"]["name"].string {
-                //self.isGameToday = true
                 self.awayTeamName = awayTeam
-                //self.awayTeamImage = UIImage(named: self.awayTeamName!) //TODO: check this
-                //gameIndex = i
-                //break;
             }
             if let homeTeam = json["games"][i]["home"]["name"].string {
                 self.homeTeamName = homeTeam
-                //self.homeTeamImage = UIImage(named: self.homeTeamName!) //TODO: check this
-                //gameIndex = i
-                //break;
             }
-        
             if self.awayTeamName == "Toronto Raptors" || self.homeTeamName == "Toronto Raptors" { //TODO: change to userdefaults, hardcoded for now
-                self.isGameToday = true
-                self.currentGameId = json["games"][i]["id"].string
-//                self.homeTeamImage = UIImage(named: self.homeTeamName!)
-//                self.awayTeamImage = UIImage(named: self.awayTeamName!)
+                self.gameId = json["games"][i]["id"].string
+                let dateScheduledString = json["games"][i]["scheduled"].string
+                //TODO: NSDateFormatter for this date^
+                
+                //self.homeTeamImage = UIImage(named: self.homeTeamName!)
+                //self.awayTeamImage = UIImage(named: self.awayTeamName!)
+                if json["games"][i]["status"].string == "inprogress" {
+                    self.isGameOngoing = true
+                }
+                else {
+                    self.isGameOngoing = false
+                }
+                break;
             }
-            else {
-                self.isGameToday = false
-                var index = 0
-                while self.homeTeamName != "Toronto Raptors" || self.awayTeamName != "Toronto Raptors" {
-                    index++
-                    
-                    api.getNextGame(dayOffset: index)
-                }
-                self.isGameToday = true
-            }
-                let Date1 = json["games"][i]["scheduled"]
-                //println(Date)
-                var splitstring: String = Date1.string!
-            
-               // var splittingthestring = splitstring.componentsSeparatedByString(":")
-                let result = split(splitstring as String, { $0 == "T" }, maxSplit: 1, allowEmptySlices: true)
-                let a = result[0]
-                let b = result[1]
-                var c = a + " " + b
-                
-                println(c)
-                
-                isGameToday = true
-                let GameId = json["games"][i]["id"].stringValue
-                //println(GameId)
-                  currentGameId = GameId
-                println(GameId)
-                
-                }
-                if isGameToday != true {
-                    isGameToday = false
-                }
         }
     }
+    
+    func parseGetGameClockQuarterScore(data: NSData) {
+        let json = JSON(data: data)
+        
+        self.gameClock = json["clock"].string
+        self.quarter = json["quarter"].intValue
+        self.homeTeamScore = json["home"]["points"].intValue
+        self.awayTeamScore = json["away"]["points"].intValue
+        
+        if json["status"].string == "inprogress" {
+            self.isGameOngoing = false
+        }
+    }
+}

@@ -98,14 +98,14 @@
 			children = (
 				D3CC01231A92AC26005FCD6A /* SwiftyJSON.swift */,
 				D3CC011F1A92AB42005FCD6A /* ApiWrapper.swift */,
-				D33F58491A7D497E00491749 /* AppDelegate.swift */,
-				D33C18EE1A8B11E7007DB6EB /* Models */,
 				D33F584B1A7D497E00491749 /* TeamSelectionViewController.swift */,
+				D3CC01151A8FDBC1005FCD6A /* TeamStatusViewController.swift */,
+				D33C18EE1A8B11E7007DB6EB /* Models */,
+				D33F58491A7D497E00491749 /* AppDelegate.swift */,
 				D33F584D1A7D497E00491749 /* Main.storyboard */,
 				D33F58501A7D497E00491749 /* Images.xcassets */,
 				D33F58521A7D497E00491749 /* LaunchScreen.xib */,
 				D33F58471A7D497E00491749 /* Supporting Files */,
-				D3CC01151A8FDBC1005FCD6A /* TeamStatusViewController.swift */,
 			);
 			path = NBANow;
 			sourceTree = "<group>";
