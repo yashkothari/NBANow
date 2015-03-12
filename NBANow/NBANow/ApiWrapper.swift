@@ -9,31 +9,14 @@
 import Foundation
 
 class ApiWrapper {
-    let API_KEY = "yayhu3b9nqghx2zcqmtw2sn6"
-    let teamData:TeamData = TeamData.sharedInstance
-    var timer: NSTimer?
+    static let sharedInstance = ApiWrapper()
 
-//From: http://code.martinrue.com/posts/the-singleton-pattern-in-swift
-//To create singleton
-/////////////////////////////////////////////
-    class var sharedInstance: ApiWrapper {
-        struct Static {
-            static var instance: ApiWrapper?
-            static var token: dispatch_once_t = 0
-        }
-        
-        dispatch_once(&Static.token) {
-            Static.instance = ApiWrapper()
-        }
-        
-        return Static.instance!
-    }
-/////////////////////////////////////////////
+    let API_KEY = "yayhu3b9nqghx2zcqmtw2sn6" //TODO: move this into a Constants file
+    let teamData = TeamData.sharedInstance
     
     init() {}
     
     private func getDateComponents(date:NSDate) -> NSDateComponents {
-        //let todayDate = NSDate()
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute | .CalendarUnitMonth | .CalendarUnitYear | .CalendarUnitDay, fromDate: date)
         
@@ -48,8 +31,8 @@ class ApiWrapper {
             self.teamData.parseGetGameData(data)
             
             if self.teamData.isGameOngoing! {
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("getGameClockQuarterScore"), userInfo: nil, repeats: true)
-                self.timer?.fire()
+//                self.timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("getGameClockQuarterScore"), userInfo: nil, repeats: true)
+//                self.timer?.fire()
             }
             else {
                 var index = 0
@@ -64,7 +47,7 @@ class ApiWrapper {
 
     func getGameClockQuarterScore(currentGameId: String) {
         if !self.teamData.isGameOngoing! {
-            self.timer?.invalidate()
+//            self.timer?.invalidate()
         }
         else {
             let baseUrl = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(currentGameId)/boxscore.json?api_key=\(API_KEY)")

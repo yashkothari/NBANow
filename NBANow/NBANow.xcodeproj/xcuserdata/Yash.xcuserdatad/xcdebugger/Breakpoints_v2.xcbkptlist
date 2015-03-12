@@ -10,7 +10,21 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NBANow/TeamData.swift"
-            timestampString = "446448930.570837"
+            timestampString = "447814673.730366"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NBANow/TeamData.swift"
+            timestampString = "447814673.730366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -24,11 +38,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NBANow/TeamData.swift"
-            timestampString = "446448930.570837"
+            timestampString = "447814673.730366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109">
+            startingLineNumber = "114"
+            endingLineNumber = "114">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -38,25 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NBANow/TeamData.swift"
-            timestampString = "446448930.570837"
+            timestampString = "447814673.730366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NBANow/TeamData.swift"
-            timestampString = "446448930.570837"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151">
+            startingLineNumber = "152"
+            endingLineNumber = "152">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

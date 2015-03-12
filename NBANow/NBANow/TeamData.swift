@@ -1,5 +1,5 @@
 //
-//  DataModel.swift
+//  TeamData.swift
 //  NBANow
 //
 //  Created by Kartheek Gajjala on 2015-01-31.
@@ -10,25 +10,8 @@ import Foundation
 import UIKit
 
 class TeamData {
+    static let sharedInstance = TeamData()
     
-    //From: http://code.martinrue.com/posts/the-singleton-pattern-in-swift
-    //To create singleton
-    /////////////////////////////////////////////
-    class var sharedInstance: TeamData {
-        struct Static {
-            static var instance: TeamData?
-            static var token: dispatch_once_t = 0
-        }
-        
-        dispatch_once(&Static.token) {
-            Static.instance = TeamData()
-        }
-        
-        return Static.instance!
-    }
-    /////////////////////////////////////////////
-    
-    let api = ApiWrapper.sharedInstance
     var isGameOngoing: Bool?
     var gameId: String?
     var gameClock: String?
