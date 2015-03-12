@@ -42,7 +42,7 @@ class ApiWrapper {
     
     func getNextGame(dayOffset:Int = 0) {
         let date = NSDate().dateByAddingTimeInterval(NSTimeInterval(60 * 60 * 24 * dayOffset))
-        let url = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(getDateComponents(date!).year)/\(getDateComponents(date!).month)/\(getDateComponents(date!).day)/schedule.json?api_key=\(API_KEY)")
+        let url = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(getDateComponents(date).year)/\(getDateComponents(date).month)/\(getDateComponents(date).day)/schedule.json?api_key=\(API_KEY)")
 
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             self.teamData.parseGetGameData(data)

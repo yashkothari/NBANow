@@ -61,7 +61,7 @@ class TeamSelectionViewController: UITableViewController {
     
     //creates our cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell //"Cell" is the identifier
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell //"Cell" is the identifier
         
         var team : Team
         
