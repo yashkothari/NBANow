@@ -23,7 +23,7 @@ class ApiWrapper {
         return components
     }
     
-    func getNextGame(dayOffset:Int = 0) {
+    func getNextGame(dayOffset:Int = 0, completion: (AnyObject -> Void)) {
         let date = NSDate().dateByAddingTimeInterval(NSTimeInterval(60 * 60 * 24 * dayOffset))
         let url = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(getDateComponents(date).year)/\(getDateComponents(date).month)/\(getDateComponents(date).day)/schedule.json?api_key=\(API_KEY)")
 
@@ -38,7 +38,7 @@ class ApiWrapper {
                 var index = 0
                 while !(self.teamData.homeTeamName == "Toronto Raptors" || self.teamData.awayTeamName == "Toronto Raptors") {
                     index++
-                    self.getNextGame(dayOffset: index)
+                    self.getNextGame(dayOffset: index, completion: {Bool in println()})
                 }
             }
         }
