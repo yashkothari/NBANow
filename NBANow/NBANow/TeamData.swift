@@ -55,7 +55,7 @@ class TeamData {
                     self.isGameOngoing = true
                 }
                 else {
-                    self.isGameOngoing = false
+                    self.isGameOngoing = true //TODO: change to false
                 }
                 break;
             }

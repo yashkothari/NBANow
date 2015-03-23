@@ -31,7 +31,6 @@ class TeamStatusViewController : UIViewController {
     @IBOutlet var timeToGameLabel: UILabel!
     
     
-    
     @IBAction func cancelTeamSelection(segue:UIStoryboardSegue) {
         
     }
@@ -44,15 +43,35 @@ class TeamStatusViewController : UIViewController {
         super.viewDidLoad()
         
         let api = ApiWrapper.sharedInstance
-        api.getNextGame(completion: {(Bool) in
-            self.homeTeamNameLabel.text = api.teamData.homeTeamName!
-            self.homeTeamScoreLabel.text = "\(api.teamData.homeTeamScore)"
-            println(self.homeTeamScoreLabel.text);
-            
-            
-            self.awayTeamNameLabel.text = api.teamData.awayTeamName!
-            self.awayTeamScoreLabel.text = "\(api.teamData.awayTeamScore)"
-        })
+        
+        var dayOffset = 0
+        //do {
+            api.getNextGame(dayOffset: dayOffset, completion: {
+                if let isGameOngoing = api.teamData.isGameOngoing {
+                    if isGameOngoing {
+                        self.futureGameContainerView.hidden = true
+                        self.ongoingGameContainerView.hidden = false
+                        
+                        self.homeTeamNameLabel.text = api.teamData.homeTeamName!
+                        self.homeTeamScoreLabel.text = "\(api.teamData.homeTeamScore)"
+                        println(self.homeTeamScoreLabel.text);
+                        
+                        self.awayTeamNameLabel.text = api.teamData.awayTeamName!
+                        self.awayTeamScoreLabel.text = "\(api.teamData.awayTeamScore)"
+                    }
+                    else {
+                        dayOffset++
+                        self.ongoingGameContainerView.hidden = true
+                        self.futureGameContainerView.hidden = false
+                        self.opponentTeamNameLabel.text = api.teamData.homeTeamName! //TODO: change to get the team name that is not in NSUserDefaults
+                        println(self.opponentTeamNameLabel.text)
+                    }
+                }
+                else {
+                    //TODO: Display error here
+                }
+            })
+        //} while !(api.teamData.isGameOngoing != nil)
         
     }
 }

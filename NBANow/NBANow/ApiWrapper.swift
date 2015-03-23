@@ -23,24 +23,19 @@ class ApiWrapper {
         return components
     }
     
-    func getNextGame(dayOffset:Int = 0, completion: (AnyObject -> Void)) {
+    func getNextGame(dayOffset:Int = 0, completion: () -> ()) {
         let date = NSDate().dateByAddingTimeInterval(NSTimeInterval(60 * 60 * 24 * dayOffset))
-        let url = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(getDateComponents(date).year)/\(getDateComponents(date).month)/\(getDateComponents(date).day)/schedule.json?api_key=\(API_KEY)")
+        let url = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/2015/3/15/schedule.json?api_key=\(API_KEY)")
+        //\(getDateComponents(date).year)/\(getDateComponents(date).month)/\(getDateComponents(date).day)/schedule.json?api_key=\(API_KEY)")
 
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            self.teamData.parseGetGameData(data)
+            if(error != nil || data == nil) {
+                println(error) //TODO: return error to user
+                return;
+            }
             
-            if self.teamData.isGameOngoing! {
-//                self.timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("getGameClockQuarterScore"), userInfo: nil, repeats: true)
-//                self.timer?.fire()
-            }
-            else {
-                var index = 0
-                while !(self.teamData.homeTeamName == "Toronto Raptors" || self.teamData.awayTeamName == "Toronto Raptors") {
-                    index++
-                    self.getNextGame(dayOffset: index, completion: {Bool in println()})
-                }
-            }
+            self.teamData.parseGetGameData(data)
+            completion()
         }
         task.resume()
     }
