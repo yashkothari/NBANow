@@ -44,7 +44,7 @@ class TeamData {
             if let homeTeam = json["games"][i]["home"]["name"].string {
                 self.homeTeamName = homeTeam
             }
-            if self.awayTeamName == "Toronto Raptors" || self.homeTeamName == "Toronto Raptors" { //TODO: change to userdefaults, hardcoded for now
+            if self.awayTeamName == "Chicago Bulls" || self.homeTeamName == "Chicago Bulls" { //TODO: change to userdefaults, hardcoded for now
                 self.gameId = json["games"][i]["id"].string
                 let dateScheduledString = json["games"][i]["scheduled"].string
                 //TODO: NSDateFormatter for this date^
@@ -55,14 +55,14 @@ class TeamData {
                     self.isGameOngoing = true
                 }
                 else {
-                    self.isGameOngoing = true //TODO: change to false
+                    self.isGameOngoing = false //TODO: change to false
                 }
                 break;
             }
         }
     }
     
-    func parseGetGameClockQuarterScore(data: NSData) {
+    func parseGetGameClockQuarterScore(#data: NSData) {
         let json = JSON(data: data)
         
         self.gameClock = json["clock"].string
@@ -71,7 +71,7 @@ class TeamData {
         self.awayTeamScore = json["away"]["points"].intValue
         
         if json["status"].string == "inprogress" {
-            self.isGameOngoing = false
+            self.isGameOngoing = true
         }
     }
 }

@@ -25,8 +25,10 @@ class ApiWrapper {
     
     func getNextGame(dayOffset:Int = 0, completion: () -> ()) {
         let date = NSDate().dateByAddingTimeInterval(NSTimeInterval(60 * 60 * 24 * dayOffset))
-        let url = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/2015/3/15/schedule.json?api_key=\(API_KEY)")
+        let url = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(getDateComponents(date).year)/\(getDateComponents(date).month)/\(getDateComponents(date).day)/schedule.json?api_key=\(API_KEY)")
+            //2015/3/15/schedule.json?api_key=\(API_KEY)")
         //\(getDateComponents(date).year)/\(getDateComponents(date).month)/\(getDateComponents(date).day)/schedule.json?api_key=\(API_KEY)")
+        //TODO: remove comment above
 
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             if(error != nil || data == nil) {
@@ -40,14 +42,16 @@ class ApiWrapper {
         task.resume()
     }
 
-    func getGameClockQuarterScore(currentGameId: String) {
+    func getGameClockQuarterScore(currentGameId:String, completion: () -> ()) {
         if !self.teamData.isGameOngoing! {
-//            self.timer?.invalidate()
+            
         }
         else {
             let baseUrl = NSURL(string: "http://api.sportsdatallc.org/nba-t3/games/\(currentGameId)/boxscore.json?api_key=\(API_KEY)")
             let task = NSURLSession.sharedSession().dataTaskWithURL(baseUrl!) {(data, response, error) in
-                self.teamData.parseGetGameClockQuarterScore(data)
+                //TODO: error handling
+                self.teamData.parseGetGameClockQuarterScore(data: data)
+                completion()
             }
             task.resume()
         }

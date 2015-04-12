@@ -39,31 +39,36 @@ class TeamStatusViewController : UIViewController {
         
     }
     
+    let api = ApiWrapper.sharedInstance
+    let game = TeamData.sharedInstance
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let api = ApiWrapper.sharedInstance
         
         var dayOffset = 0
         //do {
             api.getNextGame(dayOffset: dayOffset, completion: {
-                if let isGameOngoing = api.teamData.isGameOngoing {
+                if let isGameOngoing = self.game.isGameOngoing {
                     if isGameOngoing {
                         self.futureGameContainerView.hidden = true
                         self.ongoingGameContainerView.hidden = false
                         
-                        self.homeTeamNameLabel.text = api.teamData.homeTeamName!
-                        self.homeTeamScoreLabel.text = "\(api.teamData.homeTeamScore)"
-                        println(self.homeTeamScoreLabel.text);
+                        self.homeTeamNameLabel.text = self.game.homeTeamName!
+                        self.awayTeamNameLabel.text = self.game.awayTeamName!
                         
-                        self.awayTeamNameLabel.text = api.teamData.awayTeamName!
-                        self.awayTeamScoreLabel.text = "\(api.teamData.awayTeamScore)"
+                        
+                        let timer = NSTimer(self.updateGameClockQuarterScore());
                     }
                     else {
                         dayOffset++
                         self.ongoingGameContainerView.hidden = true
                         self.futureGameContainerView.hidden = false
-                        self.opponentTeamNameLabel.text = api.teamData.homeTeamName! //TODO: change to get the team name that is not in NSUserDefaults
+                        self.opponentTeamNameLabel.text = self.game.homeTeamName! //TODO: change to get the team name that is not in NSUserDefaults
+                        if let d = self.game.dateScheduled {
+                        //let d = self.game.dateScheduled!
+                            self.timeToGameLabel.text = "\(d)"
+                        }
                         println(self.opponentTeamNameLabel.text)
                     }
                 }
@@ -71,7 +76,15 @@ class TeamStatusViewController : UIViewController {
                     //TODO: Display error here
                 }
             })
-        //} while !(api.teamData.isGameOngoing != nil)
+        //} while !(game.isGameOngoing != nil)
         
+    }
+    
+    func updateGameClockQuarterScore() {
+        self.api.getGameClockQuarterScore(self.game.gameId!, completion: {
+            //self.homeTeamScoreLabel.text = "\(self.game.homeTeamScore!)"
+            self.awayTeamScoreLabel.text = "\(self.game.awayTeamScore!)"
+            //self.gameClockAndQuarterLabel.text = "\(self.game.gameClock!)"// + "\(self.game.quarter?)"
+        })
     }
 }
